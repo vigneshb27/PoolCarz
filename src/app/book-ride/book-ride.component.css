@@ -1,0 +1,51 @@
+.box-container{
+    display: flex;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.box{
+    border: 1px solid rgb(65, 150, 235);
+    width: 60%;
+    
+}
+#heading{
+    background-color: rgb(5, 106, 149);
+}
+
+#heading p{
+    padding: 2%;
+    color: white;
+}
+
+#lett{
+    padding-left: 2%;
+    padding-right: 2%;
+}
+
+.rough{
+   
+    margin-bottom: 4%;
+}
+
+.soft{
+    margin-right: 5%;
+    margin-bottom: 4%;
+}
+
+.align{
+    text-align: center;
+}
+
+th,td{
+    border: 1px solid rgb(220, 219, 219);
+}
+
+th{
+    background-color: rgb(5, 106, 149);
+    color: white;
+}
+
+.btn-primary{
+    background-color: rgb(5, 106, 149);
+}

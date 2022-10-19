@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="container box-container">
+        <div class="mx-auto box">
+            <div id="heading">
+                <p>Book a ride</p>
+            </div>
+            <p id="lett">Poll Carz is an online application which enable users to share rides with others. You can
+                either book a ride or offer a ride. Did we mention that this app is advertisement free? To add on top of
+                that its free of cost! So what are you waiting for? Check out the rides available and start PCing!!</p>
+            <div *ngIf="display">
+                <button type="button" class="btn btn-primary rough mx-auto d-block" (click)="toggle()">Show All
+                    Rides</button>
+                <button type="button" class="btn btn-primary rough dblock mx-auto d-block">Offer A Ride!</button>
+            </div>
+
+            <div *ngIf="!display" class="align">
+                <button style="background-color:rgb(5, 187, 187)" type="button" class="btn btn-primary soft "
+                    (click)="toggle()">Show All Rides</button>
+                <button type="button" class="btn btn-primary soft  ">To Office</button>
+                <button type="button" class="btn btn-primary soft ">From Office</button>
+                <button type="button" class="btn btn-primary soft ">Others</button>
+                <div>
+                    <p style="text-align: center; color:rgb(55, 55, 245)">Please select a ride!</p>
+                </div>
+                <div class="container">
+                    <table class="table">
+                        <tr>
+                            <th>Start Point</th>
+                            <th>End Point</th>
+                            <th>Seats Available</th>
+                        </tr>
+                       
+                        <tr *ngFor="let ride of array" appMouseHover>
+                            <td>{{ride.offerId}}</td>
+                            <td>{{ride.destination}}</td>
+                            <td>{{ride.seatsLeft}}</td>
+                        </tr>
+                    </table>
+                </div>
+                <button type="button" class="btn btn-primary rough dblock mx-auto d-block">Offer A Ride!</button>
+            </div>
+
+        </div>
+    </div>
+</body>
+
+</html>
