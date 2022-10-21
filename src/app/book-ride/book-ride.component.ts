@@ -13,26 +13,28 @@ export class BookRideComponent implements OnInit {
   }
   display = true;
 
+  particular_ride = 0;
+  current: string = "all";
+
   toggle()
   {
     this.display = !this.display;
     this.current = "all";
+    this.particular_ride = 0;
   }
 
   array = [
-    {"id": 0, offerId: "Vanrose Junction", name: "", car: "", seatsLeft: 3, pickUp: "", destination: "Office"},
-    {"id": 0, offerId: "PTP", name: "", car: "", seatsLeft: 2, pickUp: "", destination: "Office"},
-    {"id": 0, offerId: "Office", name: "", car: "", seatsLeft: 7, pickUp: "", destination: "East-Fort"},
-    {"id": 0, offerId: "Office", name: "", car: "", seatsLeft: 5, pickUp: "", destination: "Central Mail"},
-    {"id": 0, offerId: "School", name: "", car: "", seatsLeft: 5, pickUp: "", destination: "Central Mail"}
+    {"id": 1, offerId: "", name: "AAA", car: "Audi", seatsLeft: 3, pickUp: "Vanrose Junction", destination: "Office"},
+    {"id": 2, offerId: "", name: "BBB", car: "BMW", seatsLeft: 2, pickUp: "PTP", destination: "Office"},
+    {"id": 3, offerId: "", name: "CCC", car: "Benz", seatsLeft: 7, pickUp: "Office", destination: "East-Fort"},
+    {"id": 4, offerId: "", name: "DDD", car: "Volvo", seatsLeft: 5, pickUp: "Office", destination: "Central Mail"},
+    {"id": 5, offerId: "", name: "EEE", car: "Tesla", seatsLeft: 5, pickUp: "School", destination: "Central Mail"}
   ];
 
-  current: string = "all";
+  
+  
 
-  @HostListener('click') onClick()
-  {
-    console.log(this.current);
-  }
+  
   toOffice(){
     if(this.current == "toOffice")
     {
@@ -42,6 +44,7 @@ export class BookRideComponent implements OnInit {
     {
       this.current = "toOffice";
     }
+    this.particular_ride = 0;
   }
   fromOffice(){
     if(this.current == "fromOffice")
@@ -52,6 +55,7 @@ export class BookRideComponent implements OnInit {
     {
       this.current = "fromOffice";
     }
+    this.particular_ride = 0;
   }
   others(){
     if(this.current == "others")
@@ -62,5 +66,13 @@ export class BookRideComponent implements OnInit {
     {
       this.current = "others";
     }
+    this.particular_ride = 0;
   }
+  disp_all = true;
+  booked()
+  {
+    this.display = !this.display;
+    this.disp_all = !this.disp_all;
+  }
+
 }

@@ -1,0 +1,42 @@
+<div class="container" *ngIf="arr.length > 0">
+    <div class="box" >
+        <p id="heading">Ride Details</p>
+        <div class="container">
+            <div class="table-responsive">
+                <table class="table">
+
+
+                    <tr>
+                        <th>Id</th>
+                        <th>Name</th>
+                        <th>Car</th>
+                        <th>Seats Left</th>
+                        <th>Pick-up Point</th>
+                        <th>Destination</th>
+                    </tr>
+
+                    <tr *ngFor="let ride of arr">
+                        <td>{{ride.id}}</td>
+                        <td>{{ride.name}}</td>
+                        <td>{{ride.car}}</td>
+                        <td>{{ride.seatsLeft}}</td>
+                        <td>{{ride.pickUp}}</td>
+                        <td>{{ride.destination}}</td>
+                    </tr>
+
+                </table>
+
+            </div>
+        </div>
+        <ng-container *ngIf = "!cancel_disp">
+        <button type="button" class="btn btn-primary rough dblock mx-auto d-block" (click) = "book()">Book!</button>
+        </ng-container>
+        <ng-container *ngIf = "cancel_disp">
+            <div>
+                <p style="text-align: center; color:rgb(55, 55, 245)">Booking done. Your booking id : 101</p>
+            </div>
+            <button type="button" class="btn btn-danger rough dblock mx-auto d-block" (click) = "book()"> Cancel Booked Ride</button>
+        </ng-container>
+    </div>
+    <br>
+</div>

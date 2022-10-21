@@ -9,7 +9,7 @@ export class RideFilterPipe implements PipeTransform {
     
     if(args == "fromOffice")
     {
-      return rides.filter(ride => ride.offerId == "Office");
+      return rides.filter(ride => ride.pickUp == "Office");
     }
 
     else if(args == "toOffice")
@@ -19,7 +19,7 @@ export class RideFilterPipe implements PipeTransform {
 
     else if(args == "others")
     {
-      return rides.filter(ride => ride.offerId != "Office" && ride.destination != "Office");
+      return rides.filter(ride => ride.pickUp != "Office" && ride.destination != "Office");
     }
 
     else if(args == "all")

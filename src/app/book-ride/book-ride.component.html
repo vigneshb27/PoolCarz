@@ -17,10 +17,9 @@
             <p id="lett">Poll Carz is an online application which enable users to share rides with others. You can
                 either book a ride or offer a ride. Did we mention that this app is advertisement free? To add on top of
                 that its free of cost! So what are you waiting for? Check out the rides available and start PCing!!</p>
-            <div *ngIf="display">
+            <div *ngIf="display && disp_all">
                 <button type="button" class="btn btn-primary rough mx-auto d-block" (click)="toggle()">Show All
                     Rides</button>
-                <button type="button" class="btn btn-primary rough dblock mx-auto d-block">Offer A Ride!</button>
             </div>
 
             <div *ngIf="!display" class="align">
@@ -33,23 +32,33 @@
                     <p style="text-align: center; color:rgb(55, 55, 245)">Please select a ride!</p>
                 </div>
                 <div class="container">
+                    <div class="table-responsive">
                     <table class="table">
+                        <tbody>
                         <tr>
                             <th>Start Point</th>
                             <th>End Point</th>
                             <th>Seats Available</th>
                         </tr>
-
-                        <tr *ngFor="let ride of array | rideFilter: current"  appMouseHover>
-                            <td>{{ride.offerId}}</td>
+                        
+                        <tr *ngFor="let ride of array | rideFilter: current"  appMouseHover (click) = "particular_ride = ride.id">
+                            <td>{{ride.pickUp}}</td>
                             <td>{{ride.destination}}</td>
                             <td>{{ride.seatsLeft}}</td>
                         </tr>
+                    </tbody>
 
                     </table>
                 </div>
-                <button type="button" class="btn btn-primary rough dblock mx-auto d-block">Offer A Ride!</button>
+                </div>
+               
+                 
+                    
+                
+                
             </div>
+            <app-ride-details [ride] = "particular_ride" [rides] = "array" (bookEvent) = "booked()"></app-ride-details>
+                <button type="button" class="btn btn-primary rough dblock mx-auto d-block">Offer A Ride!</button>
 
         </div>
     </div>
