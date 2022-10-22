@@ -7,6 +7,8 @@ import { BookRideComponent } from './book-ride/book-ride.component';
 import { MouseHoverDirective } from './mouse-hover.directive';
 import { RideFilterPipe } from './ride-filter.pipe';
 import { RideDetailsComponent } from './ride-details/ride-details.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { OfferRideComponent } from './offer-ride/offer-ride.component';
 
 @NgModule({
   declarations: [
@@ -16,13 +18,15 @@ import { RideDetailsComponent } from './ride-details/ride-details.component';
     MouseHoverDirective,
     RideFilterPipe,
     RideDetailsComponent,
+    OfferRideComponent,
     
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
-  bootstrap: [BookRideComponent]
+  bootstrap: [OfferRideComponent]
 })
 export class AppModule { }

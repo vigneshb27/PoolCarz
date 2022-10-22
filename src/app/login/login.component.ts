@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { FormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import {Login} from './login'
 
 
@@ -10,12 +10,24 @@ import {Login} from './login'
 })
 
 
-export class LoginComponent {
+export class LoginComponent implements OnInit {
   isAuthenticated!: boolean;
   submitted = false;
   userName!: string;
   login = new Login();
-  
+
+  loginForm!: FormGroup;
+
+  constructor(private formBuilder: FormBuilder) { }
+
+  ngOnInit() 
+  {
+    this.loginForm = this.formBuilder.group({
+      username: ['', Validators.required],
+      password: ['', Validators.required],
+    });
+  }
+
  users: Login[] = [
      {username : "user1", password : "pass"},
 
@@ -23,7 +35,12 @@ export class LoginComponent {
  ];
 
   onSubmit() {
-    this.submitted = true;
+   // this.submitted = true;
+    this.loginForm.markAllAsTouched();
+    if(!this.loginForm.controls.username.errors && !this.loginForm.controls.password.errors)
+    {
+      this.submitted = true;
+    }
     const user = this.users.find(currUser => currUser.username === this.login.username && currUser.password === this.login.password);
     console.log(this.login.username);
     console.log(this.login.password);

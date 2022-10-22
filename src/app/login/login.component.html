@@ -1,30 +1,45 @@
 <div class="container box-container">
   <div class="mx-auto box">
 
-    <div *ngIf="!submitted">
+   
       <div id="heading">
         <p>Login</p>
       </div>
       <div class="container">
-        <form class="form-group">
-          <label for="username"><b>User Name</b> </label>
-          <input type="text" [(ngModel)]="login.username" name="username" class="form-control" /><br /><br />
-          <label for="password"><b>Password</b> </label>
-          <input type="password" [(ngModel)]="login.password" name="password" class="form-control" #password /><br />
+        <form [formGroup]="loginForm" novalidate>
+          <div class="form-group">
+            <label for="username"><b>User Name</b> </label>
+            <input type="text" [(ngModel)]="login.username" name="username" class="form-control"
+              formControlName="username" />
+            <div *ngIf="loginForm.controls.username.touched &&
+                loginForm.controls.username.errors" class="invalid-feedback d-block">
+              *This field is required!
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="password"><b>Password</b> </label>
+            <input type="password" [(ngModel)]="login.password" name="password" class="form-control" #password
+              formControlName="password" />
+            <p *ngIf="loginForm.controls.password.touched &&
+                  loginForm.controls.password.errors" class="invalid-feedback d-block">
+              *This field is required!
+            </p>
+            <ng-container *ngIf="submitted">
+              <p *ngIf="isAuthenticated" class="valid-feedback d-block">
+                <br>Login success!
+              </p>
+              <p *ngIf="!isAuthenticated" class="invalid-feedback d-block">
+                <br>*Invalid credentials
+              </p>
+             
+            </ng-container>
+        
+          </div>
         </form>
         <button class="btn btn-primary d-block mx-auto" (click)="onSubmit()">Login</button>
       </div>
-    </div>
-    <div *ngIf="submitted">
-      <div *ngIf="isAuthenticated; else failureMsg">
-        <h4>Welcome {{ userName }}</h4>
-      </div>
-      <ng-template #failureMsg>
-        <h4>Invalid Login !!! Please try again...</h4>
-      </ng-template>
-      <button type="button" (click)="submitted = false">Back</button>
-    </div>
-
+   
+    
 
 
 
