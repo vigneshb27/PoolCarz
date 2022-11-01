@@ -10,6 +10,7 @@ import { RideDetailsComponent } from './ride-details/ride-details.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { OfferRideComponent } from './offer-ride/offer-ride.component';
 import { HttpClientModule } from '@angular/common/http';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
@@ -27,9 +28,10 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    AppRoutingModule
   ],
   providers: [],
-  bootstrap: [BookRideComponent]
+  bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -58,7 +58,7 @@
                 
             </div>
             <app-ride-details [ride] = "particular_ride" [rides] = "array" (bookEvent) = "booked()"></app-ride-details>
-                <button type="button" class="btn btn-primary rough dblock mx-auto d-block">Offer A Ride!</button>
+            <a [routerLink]='["/offer-ride"]'><button type="button" class="btn btn-primary rough dblock mx-auto d-block">Offer A Ride!</button></a>
 
         </div>
     </div>

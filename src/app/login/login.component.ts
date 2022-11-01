@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import {Login} from './login'
 import { RestService } from '../rest.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -19,7 +20,7 @@ export class LoginComponent implements OnInit {
   users : Login[] = [];
   loginForm!: FormGroup;
 
-  constructor(private formBuilder: FormBuilder, private restService: RestService) { }
+  constructor(private formBuilder: FormBuilder, private restService: RestService, private router: Router) { }
 
   ngOnInit() 
   {
@@ -48,6 +49,7 @@ export class LoginComponent implements OnInit {
     console.log(this.login.password);
     if (user) {
       this.isAuthenticated = true;
+      this.router.navigate(['/book-ride']);
     } else {
       this.isAuthenticated = false;
     }

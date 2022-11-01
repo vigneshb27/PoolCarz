@@ -46,4 +46,8 @@ export class OfferRideComponent implements OnInit {
     }
   }
 
+  goBack() {
+    window.history.back();
+  }
+
 }
