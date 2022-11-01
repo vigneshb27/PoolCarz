@@ -9,6 +9,7 @@ import { RideFilterPipe } from './ride-filter.pipe';
 import { RideDetailsComponent } from './ride-details/ride-details.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { OfferRideComponent } from './offer-ride/offer-ride.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -19,14 +20,16 @@ import { OfferRideComponent } from './offer-ride/offer-ride.component';
     RideFilterPipe,
     RideDetailsComponent,
     OfferRideComponent,
+
     
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
-  bootstrap: [OfferRideComponent]
+  bootstrap: [BookRideComponent]
 })
 export class AppModule { }

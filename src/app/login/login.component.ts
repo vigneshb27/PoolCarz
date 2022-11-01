@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import {Login} from './login'
+import { RestService } from '../rest.service';
 
 
 @Component({
@@ -15,24 +16,25 @@ export class LoginComponent implements OnInit {
   submitted = false;
   userName!: string;
   login = new Login();
-
+  users : Login[] = [];
   loginForm!: FormGroup;
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder, private restService: RestService) { }
 
   ngOnInit() 
   {
+    this.restService.getUsers().subscribe({next:users => this.users = users});
     this.loginForm = this.formBuilder.group({
       username: ['', Validators.required],
       password: ['', Validators.required],
     });
   }
 
- users: Login[] = [
-     {username : "user1", password : "pass"},
+//  users: Login[] = [
+//      {username : "user1", password : "pass"},
 
-     {username: "user2", password : "pass"}
- ];
+//      {username: "user2", password : "pass"}
+//  ];
 
   onSubmit() {
    // this.submitted = true;

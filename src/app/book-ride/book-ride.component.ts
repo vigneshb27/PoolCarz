@@ -1,4 +1,6 @@
 import { Component, OnInit, HostListener } from '@angular/core';
+import { RestService } from '../rest.service';
+
 
 @Component({
   selector: 'app-book-ride',
@@ -7,10 +9,18 @@ import { Component, OnInit, HostListener } from '@angular/core';
 })
 export class BookRideComponent implements OnInit {
 
-  constructor() { }
 
-  ngOnInit(): void {
+  array: any[] = [];
+
+
+  constructor(private restService: RestService) { }
+
+  ngOnInit() 
+  {
+    this.restService.getRides().subscribe({next:rides => this.array = rides});
   }
+
+
   display = true;
 
   particular_ride = 0;
@@ -23,13 +33,13 @@ export class BookRideComponent implements OnInit {
     this.particular_ride = 0;
   }
 
-  array = [
-    {"id": 1, offerId: "", name: "AAA", car: "Audi", seatsLeft: 3, pickUp: "Vanrose Junction", destination: "Office"},
-    {"id": 2, offerId: "", name: "BBB", car: "BMW", seatsLeft: 2, pickUp: "PTP", destination: "Office"},
-    {"id": 3, offerId: "", name: "CCC", car: "Benz", seatsLeft: 7, pickUp: "Office", destination: "East-Fort"},
-    {"id": 4, offerId: "", name: "DDD", car: "Volvo", seatsLeft: 5, pickUp: "Office", destination: "Central Mail"},
-    {"id": 5, offerId: "", name: "EEE", car: "Tesla", seatsLeft: 5, pickUp: "School", destination: "Central Mail"}
-  ];
+  // array = [
+  //   {"id": 1, offerId: "", name: "AAA", car: "Audi", seatsLeft: 3, pickUp: "Vanrose Junction", destination: "Office"},
+  //   {"id": 2, offerId: "", name: "BBB", car: "BMW", seatsLeft: 2, pickUp: "PTP", destination: "Office"},
+  //   {"id": 3, offerId: "", name: "CCC", car: "Benz", seatsLeft: 7, pickUp: "Office", destination: "East-Fort"},
+  //   {"id": 4, offerId: "", name: "DDD", car: "Volvo", seatsLeft: 5, pickUp: "Office", destination: "Central Mail"},
+  //   {"id": 5, offerId: "", name: "EEE", car: "Tesla", seatsLeft: 5, pickUp: "School", destination: "Central Mail"}
+  // ];
 
   
   
