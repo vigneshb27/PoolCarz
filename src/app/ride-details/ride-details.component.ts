@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter  } from '@angular/core';
+import { RestService } from '../rest.service';
 
 @Component({
   selector: 'app-ride-details',
@@ -7,12 +8,13 @@ import { Component, OnInit, Input, Output, EventEmitter  } from '@angular/core';
 })
 export class RideDetailsComponent implements OnInit {
 
-  constructor() { }
+  constructor(private restService: RestService) { }
 
   ngOnInit(): void {
   }
   ride_id!: number;
-  
+  uname = "";
+  curUser = this.restService.read();
   arr!: any[];
   
   @Input()rides!: any[];
@@ -24,6 +26,8 @@ export class RideDetailsComponent implements OnInit {
     for (var i = 0; i < this.rides.length; i++) {
       if (this.rides[i].id === ride_id) {
         this.arr.push(this.rides[i]);
+        this.ride_id = ride_id;
+        this.uname = this.rides[i].username;
       }
     }
   }
@@ -35,6 +39,14 @@ export class RideDetailsComponent implements OnInit {
   {
     this.cancel_disp = !this.cancel_disp;
     this.bookEvent.emit();
+    if(this.cancel_disp)
+    {
+        this.restService.increment(this.ride_id);
+    }
+    else
+    {
+        this.restService.decrement(this.ride_id);
+    }
   }
 
 

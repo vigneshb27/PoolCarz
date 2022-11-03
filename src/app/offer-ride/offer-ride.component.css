@@ -1,3 +1,11 @@
+body{
+    background-image: url('../../assets/images/blue-abstract-gradient-wave-wallpaper.jpg');
+    background-repeat: no-repeat;
+   
+    background-size: cover;
+    min-height:100%;
+}
+
 .box-container{
     display: flex;
     align-items: center;

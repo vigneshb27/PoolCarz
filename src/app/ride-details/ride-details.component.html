@@ -28,8 +28,12 @@
 
             </div>
         </div>
+        <div *ngIf="uname == curUser">
+            <p style="text-align: center; color:rgb(245, 55, 55)">Owner of a ride cannot book the same ride!</p>
+           
+        </div>
         <ng-container *ngIf = "!cancel_disp">
-        <button type="button" class="btn btn-primary rough dblock mx-auto d-block" (click) = "book()">Book!</button>
+        <button type="button" [disabled]="uname == curUser" class="btn btn-primary rough dblock mx-auto d-block" (click) = "book()">Book!</button>
         </ng-container>
         <ng-container *ngIf = "cancel_disp">
             <div>

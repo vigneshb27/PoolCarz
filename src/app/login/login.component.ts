@@ -4,7 +4,6 @@ import {Login} from './login'
 import { RestService } from '../rest.service';
 import { Router } from '@angular/router';
 
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -47,6 +46,10 @@ export class LoginComponent implements OnInit {
     const user = this.users.find(currUser => currUser.username === this.login.username && currUser.password === this.login.password);
     console.log(this.login.username);
     console.log(this.login.password);
+    console.log(this.restService.read())
+    this.restService.write(this.login.username);
+    
+    
     if (user) {
       this.isAuthenticated = true;
       this.router.navigate(['/book-ride']);

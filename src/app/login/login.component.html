@@ -1,49 +1,57 @@
-<div class="container box-container">
-  <div class="mx-auto box">
+<div class="container-fluid">
 
-   
-      <div id="heading">
-        <p>Login</p>
-      </div>
-      <div class="container">
-        <form [formGroup]="loginForm" novalidate>
-          <div class="form-group">
-            <label for="username"><b>User Name</b> </label>
-            <input type="text" [(ngModel)]="login.username" name="username" class="form-control"
-              formControlName="username" />
-            <div *ngIf="loginForm.controls.username.touched &&
-                loginForm.controls.username.errors" class="invalid-feedback d-block">
-              *This field is required!
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="password"><b>Password</b> </label>
-            <input type="password" [(ngModel)]="login.password" name="password" class="form-control" #password
-              formControlName="password" />
-            <p *ngIf="loginForm.controls.password.touched &&
-                  loginForm.controls.password.errors" class="invalid-feedback d-block">
-              *This field is required!
-            </p>
-            <ng-container *ngIf="submitted">
-              <p *ngIf="isAuthenticated" class="valid-feedback d-block">
-                <br>Login success!
-              </p>
-              <p *ngIf="!isAuthenticated" class="invalid-feedback d-block">
-                <br>*Invalid credentials
-              </p>
-             
-            </ng-container>
+  <div class="row">
+    <div id="imageContainer"  class="col-lg-6">
+    </div>
+
+    <div id="formContainer" class="col-lg-5">
+      <br><br><br>
+      <h2>PoolCarz</h2>
+      <div class="card text-center shadow">
         
-          </div>
-        </form>
-        <button class="btn btn-primary d-block mx-auto" (click)="onSubmit()">Login</button>
+        <div class="card-body">
+          <form [formGroup]="loginForm" novalidate>
+            <div class="form-group">
+              <label for="username"><b>User Name</b> </label>
+              <input type="text" [(ngModel)]="login.username" name="username" class="form-control"
+                formControlName="username" />
+              <div *ngIf="loginForm.controls.username.touched &&
+                loginForm.controls.username.errors" class="invalid-feedback d-block">
+                *This field is required!
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="password"><b>Password</b> </label>
+              <input type="password" [(ngModel)]="login.password" name="password" class="form-control" #password
+                formControlName="password" />
+              <p *ngIf="loginForm.controls.password.touched &&
+                  loginForm.controls.password.errors" class="invalid-feedback d-block">
+                *This field is required!
+              </p>
+              <ng-container *ngIf="submitted">
+                <p *ngIf="isAuthenticated" class="valid-feedback d-block">
+                  <br>Login success!
+                </p>
+                <p *ngIf="!isAuthenticated" class="invalid-feedback d-block">
+                  <br>*Invalid credentials
+                </p>
+
+              </ng-container>
+
+            </div>
+          </form>
+
+          <button class="btn btn-primary d-block mx-auto" (click)="onSubmit()">Login</button>
+        </div>
       </div>
-   
-    
-
-
-
-
-
+      <br><br><br>
+    </div>
   </div>
 </div>
+
+
+
+
+
+
+

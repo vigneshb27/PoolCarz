@@ -13,13 +13,27 @@ export class RestService {
 
     // Makes a get request to the backend to fetch users data
     getUsers(): Observable<Login[]> {
-        return this.http.get<Login[]>('./assets/users/users.json').pipe(
+        return this.http.get<Login[]>('http://localhost:4000/api/user/users').pipe(
             catchError(this.handleError));
     }
 
-    getRides(): Observable<Login[]> {
-        return this.http.get<any[]>('./assets/rides/rides.json').pipe(
-            catchError(this.handleError));
+    getRides(): Observable<any[]> {
+        return this.http.get<any[]>('http://localhost:4000/api/rides/ridedetails');
+    }
+
+    newRide(ride: any)
+    {
+        console.log(ride);
+    }
+
+    increment(c_id: any)
+    {
+        console.log(c_id);
+    }
+
+    decrement(c_id: any)
+    {
+        console.log(c_id);
     }
 
     // Invoked if an error is thrown in the get request
@@ -27,4 +41,19 @@ export class RestService {
         console.error(err);
         return throwError(()=>err.error() || 'Server error');
     }
+
+    uname: string = "hi";
+
+    read(): any{
+        return this.uname;
+      }
+    
+      write(val: any){
+        this.uname = val;
+        console.log(this.uname);
+      }
+
 }
+
+
+

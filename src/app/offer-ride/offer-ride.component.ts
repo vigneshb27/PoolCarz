@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormsModule, FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
+import {Rides} from './ride';
+import { RestService } from '../rest.service';
 
 
 @Component({
@@ -12,13 +14,14 @@ export class OfferRideComponent implements OnInit {
   offerRideForm!: FormGroup;
 
   submitted = false;
-
-  constructor(private formBuilder: FormBuilder) { }
+  ride = new Rides();
+  constructor(private formBuilder: FormBuilder, private restService: RestService) { }
 
   ngOnInit() 
   {
     this.offerRideForm = this.formBuilder.group({
       name: ['', Validators.required],
+      id: [, Validators.required],
       start: ['', Validators.required],
       destination: ['', Validators.required],
       car: ['', Validators.required],
@@ -44,6 +47,19 @@ export class OfferRideComponent implements OnInit {
     {
       this.submitted = true;
     }
+    //console.log(this.ride.destination);
+    var n_ride = {
+      name: this.ride.name,
+      id: this.ride.id,
+      start: this.ride.start,
+      destination: this.ride.destination,
+      car: this.ride.car,
+      seats: this.ride.seats,
+      username: this.restService.read()
+    }
+
+    this.restService.newRide(n_ride);
+    
   }
 
   goBack() {

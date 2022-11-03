@@ -10,14 +10,14 @@ import { RestService } from '../rest.service';
 export class BookRideComponent implements OnInit {
 
 
-  array: any[] = [];
+  array!: any[];
 
 
   constructor(private restService: RestService) { }
 
   ngOnInit() 
   {
-    this.restService.getRides().subscribe({next:rides => this.array = rides});
+    this.getRides();
   }
 
 
@@ -42,7 +42,12 @@ export class BookRideComponent implements OnInit {
   // ];
 
   
-  
+  getRides(){
+    this.restService.getRides().subscribe((rides) =>{ 
+      this.array = rides;
+      console.log(this.array);
+    });
+  }
 
   
   toOffice(){

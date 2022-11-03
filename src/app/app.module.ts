@@ -11,6 +11,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { OfferRideComponent } from './offer-ride/offer-ride.component';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
+import { NavbarComponent } from './navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { AppRoutingModule } from './app-routing.module';
     RideFilterPipe,
     RideDetailsComponent,
     OfferRideComponent,
+    NavbarComponent,
 
     
   ],
