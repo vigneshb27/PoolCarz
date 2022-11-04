@@ -34,33 +34,39 @@
                 </div>
                 <div class="container">
                     <div class="table-responsive">
-                    <table class="table">
-                        <tbody>
-                        <tr>
-                            <th>Start Point</th>
-                            <th>End Point</th>
-                            <th>Seats Available</th>
-                        </tr>
-                        
-                        <tr *ngFor="let ride of array | rideFilter: current"  appMouseHover (click) = "particular_ride = ride.id">
-                            <td>{{ride.pickUp}}</td>
-                            <td>{{ride.destination}}</td>
-                            <td>{{ride.seatsLeft}}</td>
-                        </tr>
-                    </tbody>
+                        <table class="table">
+                            <tbody>
+                                <tr>
+                                    <th>Start Point</th>
+                                    <th>End Point</th>
+                                    <th>Seats Available</th>
+                                </tr>
 
-                    </table>
+                                <tr *ngFor="let ride of array | rideFilter: current" appMouseHover
+                                    (click)="particular_ride = ride.id">
+                                    <td>{{ride.pickUp}}</td>
+                                    <td>{{ride.destination}}</td>
+                                    <td>{{ride.seatsLeft}}</td>
+                                </tr>
+                            </tbody>
+
+                        </table>
+                    </div>
                 </div>
-                </div>
-               
-                 
-                    
-                
-                
+
+
+
+
+
             </div>
-            <app-ride-details [ride] = "particular_ride" [rides] = "array" (bookEvent) = "booked()"></app-ride-details>
-            <a [routerLink]='["/offer-ride"]'><button type="button" class="btn btn-primary rough dblock mx-auto d-block">Offer A Ride!</button></a>
-
+            <app-ride-details [ride]="particular_ride" [rides]="array" (bookEvent)="booked()"></app-ride-details>
+            <!-- <ng-container *ngIf="particular_ride">
+                <button type="button" class="btn btn-primary rough dblock mx-auto d-block">Back</button>
+            </ng-container> -->
+            <ng-container *ngIf="!particular_ride">
+                <a [routerLink]='["/offer-ride"]'><button type="button"
+                        class="btn btn-primary rough dblock mx-auto d-block">Offer A Ride!</button></a>
+            </ng-container>
         </div>
     </div>
 </body>

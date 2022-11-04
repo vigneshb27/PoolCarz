@@ -74,9 +74,18 @@ const getAllRides = async (req, res) => {
 const createRide = async (req, res) => {
   console.log("createRide");
   console.log(req.body);
-  const { id, offerId, name, car, seatsLeft, pickUp, destination, username } =
+  const { id, name, car, seats, destination, username } =
     req.body;
-
+  console.log(id);
+  console.log(name);
+  console.log(destination);
+  console.log(car);
+  console.log(seats);
+  //console.log(pickUp);
+  console.log(username);
+  pickUp = "Unknown";
+  offerId = "1221";
+  seatsLeft = seats;
   try {
     const ride = await Ride.create({
       id,
@@ -86,11 +95,13 @@ const createRide = async (req, res) => {
       seatsLeft,
       pickUp,
       destination,
-      username,
+      username
+      
     });
     res.status(201).json(ride);
   } catch (err) {
     res.status(400).json({ message: err.message });
+    console.log(err.message);
   }
 };
 

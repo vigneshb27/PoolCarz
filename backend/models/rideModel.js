@@ -15,8 +15,7 @@ const rideSchema = new Schema(
       unique: true,
     },
     offerId: {
-      type: String,
-      required: true,
+      type: String
     },
     name: {
       type: String,

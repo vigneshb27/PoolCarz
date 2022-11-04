@@ -41,14 +41,18 @@ export class RideDetailsComponent implements OnInit {
     this.bookEvent.emit();
     if(this.cancel_disp)
     {
-        this.restService.increment(this.ride_id);
+        this.restService.decrement(this.ride_id);
     }
     else
     {
-        this.restService.decrement(this.ride_id);
+        this.restService.increment(this.ride_id);
     }
   }
 
+  goBack() {
+    this.cancel_disp = !this.cancel_disp;
+    this.bookEvent.emit();
+  }
 
 
 }

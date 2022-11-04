@@ -5,6 +5,8 @@ import { catchError } from 'rxjs/operators';
 
 import { Login } from './login/login';
 
+
+
 @Injectable({
     providedIn: 'root'
 })
@@ -23,17 +25,22 @@ export class RestService {
 
     newRide(ride: any)
     {
+        ride = JSON.parse(JSON.stringify(ride))
         console.log(ride);
+      //  http.post('myapiendpoint.com', params, options).subscribe();
+        return this.http.post('http://localhost:4000/api/rides/addride', ride).subscribe();
     }
 
     increment(c_id: any)
     {
         console.log(c_id);
+        return this.http.post(`http://localhost:4000/api/rides/cancelride/${c_id}`, {}).subscribe();
     }
 
     decrement(c_id: any)
     {
         console.log(c_id);
+        return this.http.post(`http://localhost:4000/api/rides/bookride/${c_id}`, {}).subscribe();
     }
 
     // Invoked if an error is thrown in the get request
